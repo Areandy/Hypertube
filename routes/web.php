@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/sas', function () {
+    return 'Routes is cool11';
+})->middleware('auth_2');

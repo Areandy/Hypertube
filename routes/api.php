@@ -17,3 +17,25 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('users')->middleware('auth')->group(function() {
+    Route::get('users', function(Request $request) {
+
+        return 'Hello';
+    });
+});
+
+Route::middleware('auth')->group(function() {
+    Route::get('test', function(Request $request) {
+
+        // $connection = mysqli_connect('localhost','max','maxpass123','hypertube');
+        echo env('DB_USERNAME');
+        return response()->json([
+            'data' => 'Some json data'
+        ]);
+    })->name('test.huest');
+});
+
+Route::get('/test2', function (Request $request) {
+    return response()->json(['hello' => ' ma friend'], 201);
+});
