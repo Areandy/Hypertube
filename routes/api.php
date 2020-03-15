@@ -36,6 +36,11 @@ Route::middleware('auth')->group(function() {
     })->name('test.huest');
 });
 
+Route::prefix('auth')->group(function() {
+    Route::post('signin', 'AuthController@signin');
+    Route::post('signup', 'AuthController@signup');
+});
+
 Route::get('/test2', function (Request $request) {
     return response()->json(['hello' => ' ma friend'], 201);
 });

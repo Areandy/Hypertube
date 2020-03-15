@@ -19,8 +19,4 @@ class Auth
         return $next($request);
     }
 
-    public function hello()
-    {
-        return redirect('/1111');
-    }
 }

@@ -51,9 +51,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        if ($exception instanceof ModelNotFoundException) {
+        if ($this->isHttpException($exception)) {
             return response()->json([
-                "error" => "Resoure not found"
+                'data' => 'Resource not found'
             ], 404);
         }
 
